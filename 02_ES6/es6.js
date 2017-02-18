@@ -110,6 +110,82 @@ console.log("First name: " + firstName);
 console.log("Phone: " + phone);
 
 
-//EX-8 – ES2015 Modules
-import {myExternalFunction} from "./myModules/module1"
-myExternalFunction(1,2,true,false,[1,2,3]);
+//EX-8 – ES2015 Modules - DOES NOT WORK(?)
+/*import {myExternalFunction} from "./myModules/module1"
+myExternalFunction(1,2,true,false,[1,2,3]);*/
+
+//EX9 Classes and Inheritance with es2015
+
+class Shape {
+  constructor(color) {
+    this._color = color;
+  }
+  getColor() {
+    return this._color;
+  }
+  setColor(color) {
+    this._color = color;
+  }
+  getArea() {
+    return undefined;
+  }
+  getPerimeter() {
+    return undefined;
+  }
+
+  toString() {
+    return "Color: " + this._color;
+  }
+}
+
+var testShape1 = new Shape("blue");
+console.log("should be blue: " + testShape1.getColor());
+
+var testShape2 = new Shape("red");
+testShape2.setColor("orange")
+console.log("should be orange: " + testShape2.getColor());
+
+
+//Class inheritance - Base class access
+
+class Circle extends Shape {
+  constructor(color, radius) {
+    super(color);
+    this.radius = radius;
+  }
+  getRadius() {
+    return this.radius;
+  }
+  setRadius(radius) {
+    this.radius = radius;
+  }
+  toString() {
+    return "Circle's radius: " + this.radius + "; " + super.toString();
+  }
+}
+
+var circle1 = new Circle("red", 10);
+console.log(circle1.toString());
+
+
+class Cylinder extends Circle {
+  constructor(color, radius, height) {
+    super(color, radius);
+    this.height = height;
+  }
+  getHeight() {
+    return this.height;
+  }
+  setHeight() {
+    this.height = height;
+  }
+  getVolume() {
+    return this.radius * this.height;
+  }
+  toString(){
+    return "Cylinder with volume: " + this.getVolume() + " and height: " + this.height + "\n\t" + super.toString();
+  }
+}
+
+var cyl = new Cylinder("green", 10, 30);
+console.log(cyl.toString());
