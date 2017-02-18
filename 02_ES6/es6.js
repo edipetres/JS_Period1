@@ -69,7 +69,7 @@ function myF(x, y, ...rest) {
 }
 myF(5, 2, true, 2, "hello World", [1, 2, 3], new Date(), {})
 
-//EX-5 B
+//EX-5 B).
 var rest = [true, 2, "hello World", [1, 2, 3], new Date(), {}];
 var restParams = [...rest];
 myF(5, 2, ...restParams);
@@ -81,7 +81,35 @@ let fName = "Kurt";
 let lName = "Wonnegut";
 let age = 98
 
-myObj = {fName, lName, age};
-Object.keys(myObj).forEach(k => console.log("Key: "+k + ", value: "+ myObj[k]));
+myObj = { fName, lName, age };
+Object.keys(myObj).forEach(k => console.log("Key: " + k + ", value: " + myObj[k]));
 
 
+//EX-7 A - Destructing Assignment
+//Swap the value of two variables
+let first = "Kurt", last = "Wonnegut";
+console.log(`First:  ${first} , Last:  ${last} `);
+
+[first, last] = [last, first];
+console.log(`First:  ${first} , Last:  ${last} `);
+
+
+//EX-7 B
+//Initialise two variable given a method
+function getPerson() {
+  return {
+    firstName: "Kurt",
+    lastName: "Wonnegut",
+    gender: "Male",
+    email: "kurt@wonnegut.dk",
+    phone: "12345"
+  }
+}
+var {firstName, phone} = getPerson();
+console.log("First name: " + firstName);
+console.log("Phone: " + phone);
+
+
+//EX-8 – ES2015 Modules
+import {myExternalFunction} from "./myModules/module1"
+myExternalFunction(1,2,true,false,[1,2,3]);
